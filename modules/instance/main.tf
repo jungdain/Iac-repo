@@ -7,10 +7,6 @@ terraform {
   }
 }
 
-provider "openstack" {
-  alias = "instance" # 필요한 경우 추가. 상위 Provider를 상속받으면 생략 가능.
-}
-
 
 resource "openstack_compute_instance_v2" "instance" {
   name            = var.instance_name

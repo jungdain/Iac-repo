@@ -7,9 +7,7 @@ terraform {
   }
 }
 
-provider "openstack" {
-  alias = "volume" # 필요한 경우 추가. 상위 Provider를 상속받으면 생략 가능.
-}
+
 
 resource "openstack_blockstorage_volume_v3" "volume" {
   name        = var.volume_name
