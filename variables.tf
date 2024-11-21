@@ -34,7 +34,7 @@ variable "region" {
 variable "network_id" {
   description = "ID of the pre-created network"
   type        = string
-  default     = "956cfe72-ba2d-4cd8-9bbd-2e943fc73450"
+  default     = "39f5b36b-c786-410f-a61f-6120b090a77c"
 }
 
 # 이미지 정보
@@ -42,25 +42,6 @@ variable "image_id" {
   description = "ID of the image to use for instances"
   type        = string
   default     = "92863027-08bb-48b2-886a-9b3594170762"
-}
-
-# SSH 키 및 보안 그룹
-variable "key_pair_name" {
-  description = "Name of the SSH key pair"
-  type        = string
-  default     = "test-inst"
-}
-
-variable "security_groups" {
-  description = "List of security groups to assign to instances"
-  type        = list(string)
-  default     = ["global"]
-}
-
-variable "floating_ip_pool" {
-  description = "Floating IP Pool"
-  type        = string
-  default     = "sharednet1"
 }
 
 # 볼륨 정보
@@ -135,4 +116,61 @@ variable "worker2_flavor_name" {
   description = "Flavor name for the worker2 instance"
   type        = string
   default     = "worker2"
+}
+
+variable "manager_fixed_ip" {
+  description = "Fixed internal IP for the manager instance"
+  type        = string
+  default     = "192.168.10.10"
+}
+
+variable "worker1_fixed_ip" {
+  description = "Fixed internal IP for the worker1 instance"
+  type        = string
+  default     = "192.168.10.11"
+}
+
+variable "worker2_fixed_ip" {
+  description = "Fixed internal IP for the worker2 instance"
+  type        = string
+  default     = "192.168.10.12"
+}
+
+
+# 외부 플로팅 IP 정보
+variable "manager_floating_ip" {
+  description = "Floating IP for the manager instance"
+  type        = string
+  default     = "211.183.3.100"
+}
+
+variable "worker1_floating_ip" {
+  description = "Floating IP for the worker1 instance"
+  type        = string
+  default     = "211.183.3.101"
+}
+
+variable "worker2_floating_ip" {
+  description = "Floating IP for the worker2 instance"
+  type        = string
+  default     = "211.183.3.102"
+}
+
+# SSH 키 및 보안 그룹
+variable "key_pair_name" {
+  description = "Name of the SSH key pair"
+  type        = string
+  default     = "test-inst"
+}
+
+variable "security_groups" {
+  description = "List of security groups to assign to instances"
+  type        = list(string)
+  default     = ["global"]
+}
+
+variable "floating_ip_pool" {
+  description = "Floating IP Pool"
+  type        = string
+  default     = "sharednet1"
 }

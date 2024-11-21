@@ -18,6 +18,21 @@ variable "network_id" {
   type        = string
 }
 
+variable "fixed_ip" {
+  description = "Fixed internal IP for the instance"
+  type        = string
+}
+
+variable "floating_ip" {
+  description = "Floating IP to assign to the instance"
+  type        = string
+}
+
+variable "floating_ip_pool" {
+  description = "Floating IP pool for external access"
+  type        = string
+}
+
 variable "volume_id" {
   description = "ID of the volume to attach"
   type        = string
