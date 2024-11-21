@@ -1,0 +1,19 @@
+auth_url    = "http://:5000/v3"
+user_name   = ""
+password    = ""
+tenant_name = "admin"     
+region      = "RegionOne"
+
+network_id = ""
+
+image_id    = ""         
+volume_name = "test"
+volume_size = 20                    
+
+instance_name = "test"
+flavor_name   = "m1.small"
+key_pair_name = "test-inst"
+
+security_groups = ["default"]
+
+floating_ip_pool = ""
