@@ -136,7 +136,6 @@ variable "worker2_fixed_ip" {
   default     = "192.168.10.12"
 }
 
-
 # 외부 플로팅 IP 정보
 variable "manager_floating_ip" {
   description = "Floating IP for the manager instance"
@@ -173,4 +172,41 @@ variable "floating_ip_pool" {
   description = "Floating IP Pool"
   type        = string
   default     = "sharednet1"
+}
+
+# Worker3 관련 변수
+variable "worker3_instance_name" {
+  description = "Name of the worker3 instance"
+  type        = string
+  default     = "worker3"
+}
+
+variable "worker3_flavor_name" {
+  description = "Flavor name for the worker3 instance"
+  type        = string
+  default     = "db-node" # PostgreSQL 전용 노드 Flavor
+}
+
+variable "worker3_fixed_ip" {
+  description = "Fixed internal IP for the worker3 instance"
+  type        = string
+  default     = "192.168.10.13"
+}
+
+variable "worker3_floating_ip" {
+  description = "Floating IP for the worker3 instance"
+  type        = string
+  default     = "211.183.3.103"
+}
+
+variable "volume_worker3_name" {
+  description = "Name of worker3's volume"
+  type        = string
+  default     = "worker3-volume"
+}
+
+variable "volume_worker3_size" {
+  description = "Size of worker3's volume in GB"
+  type        = number
+  default     = 100
 }
