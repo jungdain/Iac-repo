@@ -4,41 +4,47 @@ variable "instance_name" {
 }
 
 variable "flavor_name" {
-  description = "Flavor of the instance"
+  description = "Flavor name for the instance"
   type        = string
 }
 
 variable "key_pair_name" {
-  description = "Name of the pre-created key pair"
+  description = "Key pair name for SSH access"
   type        = string
 }
 
 variable "network_id" {
-  description = "ID of the network to attach"
+  description = "Network ID to attach the instance"
   type        = string
 }
 
 variable "fixed_ip" {
-  description = "Fixed internal IP for the instance"
-  type        = string
-}
-
-variable "floating_ip" {
-  description = "Floating IP to assign to the instance"
-  type        = string
-}
-
-variable "floating_ip_pool" {
-  description = "Floating IP pool for external access"
+  description = "Fixed IP address for the instance"
   type        = string
 }
 
 variable "volume_id" {
-  description = "ID of the volume to attach"
+  description = "Volume ID to attach to the instance"
   type        = string
 }
 
 variable "security_groups" {
   description = "List of security groups"
   type        = list(string)
+}
+
+variable "floating_ip_pool" {
+  description = "Floating IP pool to use"
+  type        = string
+}
+
+variable "floating_ip" {
+  description = "Floating IP to assign to the instance"
+  type        = string
+  default     = null
+}
+
+variable "image_id" {
+  description = "Image ID to use for the instance"
+  type        = string
 }

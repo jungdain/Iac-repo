@@ -59,48 +59,54 @@ variable "security_groups" {
   default     = ["global"]
 }
 
+# 올바르게 정의된 instances 변수
 variable "instances" {
-  description = "List of instances with details, including volumes and IPs"
+  description = "List of instances with details"
   type = list(object({
-    name        = string   # Instance name
-    flavor      = string   # OpenStack flavor for the instance
-    fixed_ip    = string   # Internal IP address for the instance
-    floating_ip = string   # Pre-created Floating IP for the instance ("" for auto-allocation)
-    volume_name = string   # Name of the attached volume
-    volume_size = number   # Size of the attached volume in GB
+    name        = string
+    flavor      = string
+    fixed_ip    = string
+    floating_ip = string
+    volume_name = string
+    volume_size = number
+    volume_id   = string
   }))
   default = [
     {
       name        = "master"
       flavor      = "master"
       fixed_ip    = "192.168.10.10"
-      floating_ip = ""                 # Auto-allocate
+      floating_ip = ""  # Auto-allocate
       volume_name = "master-volume"
       volume_size = 100
+      volume_id   = ""  # 기본값으로 빈 문자열 설정
     },
     {
       name        = "worker1"
       flavor      = "worker1"
       fixed_ip    = "192.168.10.11"
-      floating_ip = ""                 # Auto-allocate
+      floating_ip = ""  # Auto-allocate
       volume_name = "worker1-volume"
       volume_size = 50
+      volume_id   = ""  # 빈 문자열 추가
     },
     {
       name        = "worker2"
       flavor      = "worker2"
       fixed_ip    = "192.168.10.12"
-      floating_ip = ""                 # Auto-allocate
+      floating_ip = ""  # Auto-allocate
       volume_name = "worker2-volume"
       volume_size = 50
+      volume_id   = ""  # 빈 문자열 추가
     },
     {
       name        = "worker3"
-      flavor      = "db-node"
+      flavor      = "worker3"
       fixed_ip    = "192.168.10.13"
-      floating_ip = ""                 # Auto-allocate
+      floating_ip = ""  # Auto-allocate
       volume_name = "worker3-volume"
-      volume_size = 100
+      volume_size = 50
+      volume_id   = ""  # 빈 문자열 추가
     }
   ]
 }

@@ -1,0 +1,21 @@
+- name: Initialize Swarm on Master
+  hosts: master
+  become: true
+  tasks:
+    - name: Initialize Docker Swarm
+      shell: docker swarm init --advertise-addr {{ ansible_host }}
+      register: swarm_init_output
+      changed_when: "'Swarm initialized' in swarm_init_output.stdout or 'This node is already part of a swarm' in swarm_init_output.stderr"
+
+    - name: Extract Swarm Join Token
+      shell: docker swarm join-token worker -q
+      register: swarm_join_token
+
+- name: Join Workers to Swarm
+  hosts: workers
+  become: true
+  tasks:
+    - name: Join Swarm
+      shell: docker swarm join --token {{ hostvars['master']['swarm_join_token'].stdout }} {{ hostvars['master']['ansible_host'] }}:2377
+      args:
+        warn: false
